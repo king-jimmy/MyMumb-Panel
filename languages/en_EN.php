@@ -58,7 +58,7 @@
 		$LANGUAGE['overview_superpass'] = "Password SuperUser:";
 		$LANGUAGE['overview_delete'] = "Delete the server";
 		
-		$LANGUAGE['overview_delete_title'] = "Would you really want to delete this server?";
+		$LANGUAGE['overview_delete_title'] = "Do you really want to delete this server?";
 		$LANGUAGE['overview_delete_btn_yes'] = "Yes";
 		$LANGUAGE['overview_delete_btn_no'] = "Cancel";
 	
@@ -69,7 +69,7 @@
 		$LANGUAGE['action_start_success'] = "Operation succeeded, your server has been started.";
 		$LANGUAGE['action_start_error'] = "Operation impossible, your server is already online.";
 		$LANGUAGE['action_restart'] = "Restart";
-		$LANGUAGE['action_restart_success'] = "Opération réussie, you server has been restarted.";
+		$LANGUAGE['action_restart_success'] = "Opération succeeded, you server has been restarted.";
 		$LANGUAGE['action_stop'] = "Stop";
 		$LANGUAGE['action_stop_success'] = "Operation succeeded, your server has been stopped.";
 		$LANGUAGE['action_stop_error'] = "Operation impossible, your server is already offline.";
@@ -118,7 +118,7 @@
 		
 		
 		
-		$LANGUAGE['server_must_be_on'] = "The server must be turned on to access this section.";
+		$LANGUAGE['server_must_be_on'] = "The server must be running to access this section.";
 		
 		
 ?>
