@@ -1,0 +1,21 @@
+Options +FollowSymlinks
+RewriteEngine on
+
+RewriteCond %{REQUEST_URI} !/?index.php
+RewriteRule (\.php|\.inc)$ - [F,L,NC]
+
+RewriteRule ^server/([0-9]+)/overview$ index.php?server_id=$1&display=overview [L]
+RewriteRule ^server/([0-9]+)/config$ index.php?server_id=$1&display=config [L]
+
+RewriteRule ^server/([0-9]+)/users$ index.php?server_id=$1&display=users [L]
+RewriteRule ^server/([0-9]+)/users/([0-9]+)$ index.php?server_id=$1&display=users&edit=$2 [L]
+RewriteRule ^server/([0-9]+)/users/delete-([0-9]+)$ index.php?server_id=$1&display=users&delete=$2 [L]
+
+RewriteRule ^server/([0-9]+)/viewer$ index.php?server_id=$1&display=viewer [L]
+
+RewriteRule ^server/([0-9]+)/start$ index.php?server_id=$1&display=actions&start [L]
+RewriteRule ^server/([0-9]+)/restart$ index.php?server_id=$1&display=actions&restart [L]
+RewriteRule ^server/([0-9]+)/stop$ index.php?server_id=$1&display=actions&stop [L]
+
+RewriteRule ^new-server$ index.php?display=actions&create-server [L]
+RewriteRule ^delete-server$ index.php?display=actions&delete-server [L]
