@@ -66,12 +66,12 @@
 		
 		$LANGUAGE['action_title'] = "Actions sur le serveur";
 		$LANGUAGE['action_start'] = "Démarrer";
-		$LANGUAGE['action_start_success'] = "Opération réussie, Votre serveur a été démarrer.";
-		$LANGUAGE['action_start_error'] = "Operation impossible, Votre serveur est déjà en-ligne.";
+		$LANGUAGE['action_start_success'] = "Opération réussie, Votre serveur a été démarré.";
+		$LANGUAGE['action_start_error'] = "Operation impossible, Votre serveur est déjà en ligne.";
 		$LANGUAGE['action_restart'] = "Redémarrer";
-		$LANGUAGE['action_restart_success'] = "Opération réussie, Votre serveur a été redémarrer.";
+		$LANGUAGE['action_restart_success'] = "Opération réussie, Votre serveur a été redémarré.";
 		$LANGUAGE['action_stop'] = "Arrêter";
-		$LANGUAGE['action_stop_success'] = "Opération réussie, Votre serveur a été arrêter.";
+		$LANGUAGE['action_stop_success'] = "Opération réussie, Votre serveur a été arrêté.";
 		$LANGUAGE['action_stop_error'] = "Operation impossible, Votre serveur est déjà hors-ligne.";
 		$LANGUAGE['action_config'] = "Configuration";
 		$LANGUAGE['action_users'] = "Utilisateurs";
@@ -87,7 +87,7 @@
 		$LANGUAGE['config_welcomemessage_hint'] = "Message de bienvenue lorsqu'un utilisateur se connecte.";
 		$LANGUAGE['config_maxslots'] = "Slots";
 		$LANGUAGE['config_mainchan'] = "Channel principal";
-		$LANGUAGE['config_mustbeonline'] = "Le serveur doit être en-ligne.";
+		$LANGUAGE['config_mustbeonline'] = "Le serveur doit être en ligne.";
 		$LANGUAGE['config_btn_save'] = "Sauvegarder";
 		$LANGUAGE['config_btn_cancel'] = "Annuler";
 		
