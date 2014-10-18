@@ -8,7 +8,7 @@
 	
 	$MyConfig['ICE_Password'] = '';
 	
-	$MyConfig['http_adress'] = 'http://192.168.248.131';
+	$MyConfig['http_adress'] = 'http://127.0.0.1';
 	
 	$MyConfig['default_language'] = 'en_EN';
 	
