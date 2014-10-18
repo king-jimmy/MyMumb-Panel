@@ -17,12 +17,8 @@
 		if($Server->isRunning())
 		{
 			$Server->stop();
-			$Server->start();
 		}
-		else
-		{
-			$Server->start();
-		}
+		$Server->start();
 
 	}
 	
