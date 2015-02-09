@@ -279,3 +279,13 @@ table th {
     border-bottom: 1px solid #ddd;
     font-size: 16px;
 }
+
+/* Mumble Viewer */
+
+.indent-channel {
+  padding-left:2em;
+}
+
+.indent-user {
+  padding-left:1em;
+}
