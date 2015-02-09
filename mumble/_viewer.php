@@ -3,7 +3,7 @@
 <span style="font-size:22px;"> Mumble viewer </span>
 <br><br>
 </center>
-<div class="well">
+<div class="well" style="margin: 0 auto; width:80%">
 <?php
 
   if (isset($Server)) {
