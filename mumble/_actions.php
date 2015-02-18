@@ -85,7 +85,7 @@
 			$newServer->setSuperuserPassword($pw);
 			
 
-			header('location: '.$MyConfig['http_adress'].'/mumble/server/'.$newServerID.'/overview');
+			header('location: '.$MyConfig['http_adress'].'/mumble/index.php?server_id='.$newServerID.'&display=overview');
 		}	
 		else
 		{
