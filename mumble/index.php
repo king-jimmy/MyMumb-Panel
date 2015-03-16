@@ -17,7 +17,7 @@ else
 	$ip = $_SESSION['host'];
 	$port = $_SESSION['port'];
 	$base = $ICE->stringToProxy("Meta:tcp -h $ip -p $port");
-	$MasterServer = $base->ice_checkedCast("::Murmur::Meta")->ice_context($Password);	
+	$MasterServer = $base->ice_checkedCast("::Murmur::Meta")->ice_context($Password);
 }
 
 
@@ -29,12 +29,12 @@ if(file_exists('../languages/'.$MyConfig['default_language'].'.php'))
 else
 	die("ERROR, LANGUAGE FILE DOSEN'T EXIST.");
 
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
 
 echo '
 <!DOCTYPE html>
@@ -46,10 +46,11 @@ echo '
     <title>MyMumb - Murmur Server Management </title>
     <link href="'. $MyConfig['http_adress'] .'/template/css/bootstrap.css" rel="stylesheet">
 	<link href="'. $MyConfig['http_adress'] .'/template/css/default.css" rel="stylesheet">
+	<link href="'. $MyConfig['http_adress'] .'/template/css/font-awesome.min.css" rel="stylesheet">
 	<link href="'. $MyConfig['http_adress'] .'/template/css/jquery/jquery-ui-1.10.3.custom.css" rel="stylesheet"/>
 	<link href="'. $MyConfig['http_adress'] .'/template/css/jquery/default.css" rel="stylesheet" />
-	
-	
+
+
     <script src="'. $MyConfig['http_adress'] .'/template/js/jquery.min.js"></script>
 	<script src="'. $MyConfig['http_adress'] .'/template/js/jquery-ui-1.10.3.custom.min.js"></script>
     <script src="'. $MyConfig['http_adress'] .'/template/js/bootstrap.min.js"></script>
@@ -75,11 +76,11 @@ echo '
             <li><a href="'. $MyConfig['http_adress'] .'/?logout">'.$LANGUAGE['mumble_menu_logout'].'</a></li>
           </ul>
         </div>
-		
+
       </div>
     </div>';
-	
-	$ModulesAllowed = array('overview' => true, 'config' => true, 'users' => true, 'viewer' => true, 'actions' => true);	
+
+	$ModulesAllowed = array('overview' => true, 'config' => true, 'users' => true, 'viewer' => true, 'actions' => true);
 	if(isset($_GET['display']) && !empty($ModulesAllowed[$_GET['display']]))
 	{
 		if(isset($_GET['server_id']))
@@ -90,8 +91,8 @@ echo '
 
 		echo '<div class="container"><br>
 				<h3>'. str_replace('{ID}', $Server->id(), $LANGUAGE['mumble_server_title']) .'</h3>
-				<h1 style="text-align:center;">'. $LANGUAGE['overview_title'] .'</h1> 
-				<div class="well" style="width:80%; margin: 0 auto">	
+				<h1 style="text-align:center;">'. $LANGUAGE['overview_title'] .'</h1>
+				<div class="well" style="width:80%; margin: 0 auto">
 					<div class="row">
 						<div class="col-sm-3"></div>
 						<div class="col-sm-4">'. $LANGUAGE['overview_hostname'] .' </div>
@@ -107,7 +108,7 @@ echo '
 						<div class="col-sm-4">'. $LANGUAGE['overview_slots'] .'</div>
 						<div class="col-sm-5">'. $Server->getConf('users') .' Slots</div>
 					</div>
-						
+
 					<div class="row">
 						<form action="" method="POST" id="newSUPW">
 							<div class="col-sm-3"></div>
@@ -119,7 +120,7 @@ echo '
 						<a href="#" onclick="$(\'#delete-server\').dialog(\'open\'); return false;" ><img src="'. $MyConfig['http_adress'] .'/template/images/delete.png" height="25" width="25">'. $LANGUAGE['overview_delete'] .'</a>
 					</center>
 				</div>
-				<div class="well" style="width:700px; margin: 0 auto; margin-top:5px;">	
+				<div class="well" style="width:700px; margin: 0 auto; margin-top:5px;">
 					<center>
 						<table style="text-align: center; border:0 !important;" border="0" cellpadding="2" cellspacing="2">
 						  <tbody>
@@ -139,11 +140,11 @@ echo '
 				</div>
 		';
 		}
-		
-		
+
+
 		if(file_exists('_'.$_GET['display'].'.php'))
 			include '_'.$_GET['display'].'.php';
-			
+
 		echo '</div>';
 	}
 	else
@@ -153,8 +154,8 @@ echo '
 		else
 			die('ERROR');
 	}
-		
-	
+
+
 	echo '
 
 		<div id="delete-server" class="floatingdialog">
@@ -165,14 +166,14 @@ echo '
 					<input type="hidden" name="server_id" value="'.$Server->id().'">
 					<div style="width: 500px; text-align:center;"><a href="#" onclick="deleteserver.submit();" class="custom-metro cm-green cm-auto">'. $LANGUAGE['overview_delete_btn_yes'] .'</a> <a href="#" onclick="$(\'#delete-server\').dialog(\'close\'); return false;"class="custom-metro cm-red cm-auto">'. $LANGUAGE['overview_delete_btn_no'] .'</a></div>
 				</form>
-		
+
 		</div>
 		<script type="text/javascript">
 			newFlexibleDialog("delete-server", 550);
 		</script>
-	
+
   </body>
 </html>
 ';
-	
+
 ?>

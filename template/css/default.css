@@ -289,3 +289,7 @@ table th {
 .indent-user {
   padding-left:1em;
 }
+
+.user {
+  font-weight: 700;
+}
