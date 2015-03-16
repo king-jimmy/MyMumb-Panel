@@ -50,7 +50,7 @@ echo '
 			$Server = $Server->ice_context($Password);
 		
 		echo '
-			<div class="server" onclick="window.location.href=\''. $MyConfig['http_adress'] . '/mumble/server/'. $Server->id() .'/overview' .'\';">
+			<div class="server" onclick="window.location.href=\''. $MyConfig['http_adress'] . '/mumble/index.php?server_id='. $Server->id() .'&display=overview' .'\';">
 						<span style="font-size: 16px; font-weight: bold; display: block; margin-bottom: 5px; text-align:center;">'. $Server->getConf('registername') .'</span>
 						<center><img src="'.$MyConfig['http_adress'].'/template/images/mumble.png" width="150" height="150"><br><br>';
 						echo ( $Server->isRunning() ? '<span class="label label-success">En-Ligne</span>' : '<span class="label label-danger">Hors-Ligne</span>' ) .'
@@ -72,7 +72,7 @@ echo '
 
 		<div id="new-server" class="dialogbox">
 			<h3 style="text-align: center;">'.$LANGUAGE['newserver_title'].'</h3>
-			<form action="'. $MyConfig['http_adress'] . '/mumble/new-server" method="post" class="center" id="newserver">
+			<form action="'. $MyConfig['http_adress'] . '/mumble/index.php?display=actions&create-server" method="post" class="center" id="newserver">
 
 				<table style="width: 100%">
 					<tr style="margin-top:10px;">

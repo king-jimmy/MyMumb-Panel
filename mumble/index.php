@@ -124,14 +124,14 @@ echo '
 						<table style="text-align: center; border:0 !important;" border="0" cellpadding="2" cellspacing="2">
 						  <tbody>
 							<tr>
-							  <td style="width:33%"><a href="'. $MyConfig['http_adress'] . '/mumble/server/'. $_GET['server_id'] .'/start" class="custom-metro cm-green"><i class="fa fa-play-circle"></i> '. $LANGUAGE['action_start'] .'</a></td>
-							  <td style="width:33%"><a href="'. $MyConfig['http_adress'] . '/mumble/server/'. $_GET['server_id'] .'/restart" class="custom-metro cm-blue"><i class="fa fa-repeat"></i> '. $LANGUAGE['action_restart'] .'</a></td>
-							  <td style="width:33%"><a href="'. $MyConfig['http_adress'] . '/mumble/server/'. $_GET['server_id'] .'/stop" class="custom-metro cm-red"><i class="fa fa-square"></i> '. $LANGUAGE['action_stop'] .'</a></td>
+							  <td style="width:33%"><a href="'. $MyConfig['http_adress'] . '/mumble/index.php?server_id='. $_GET['server_id'] .'&display=actions&start" class="custom-metro cm-green"><i class="fa fa-play-circle"></i> '. $LANGUAGE['action_start'] .'</a></td>
+							  <td style="width:33%"><a href="'. $MyConfig['http_adress'] . '/mumble/index.php?server_id='. $_GET['server_id'] .'&display=actions&restart" class="custom-metro cm-blue"><i class="fa fa-repeat"></i> '. $LANGUAGE['action_restart'] .'</a></td>
+							  <td style="width:33%"><a href="'. $MyConfig['http_adress'] . '/mumble/server/'. $_GET['server_id'] .'&display=actions&stop" class="custom-metro cm-red"><i class="fa fa-square"></i> '. $LANGUAGE['action_stop'] .'</a></td>
 							</tr>
 							<tr>
-							  <td><a href="'. $MyConfig['http_adress'] . '/mumble/server/'. $_GET['server_id'] .'/config" class="custom-metro cm-brown"><i class="fa fa-file-text"></i> '. $LANGUAGE['action_config'] .'</a></td>
-							  <td><a href="'. $MyConfig['http_adress'] . '/mumble/server/'. $_GET['server_id'] .'/users" class="custom-metro cm-brown"><i class="fa fa-users"></i> '. $LANGUAGE['action_users'] .'</a></td>
-							  <td><a href="'. $MyConfig['http_adress'] . '/mumble/server/'. $_GET['server_id'] .'/viewer" class="custom-metro cm-brown"><i class="fa fa-eye"></i> '. $LANGUAGE['action_viewer'] .'</a></td>
+							  <td><a href="'. $MyConfig['http_adress'] . '/mumble/index.php?server_id='. $_GET['server_id'] .'&display=config" class="custom-metro cm-brown"><i class="fa fa-file-text"></i> '. $LANGUAGE['action_config'] .'</a></td>
+							  <td><a href="'. $MyConfig['http_adress'] . '/mumble/index.php?server_id='. $_GET['server_id'] .'&display=users" class="custom-metro cm-brown"><i class="fa fa-users"></i> '. $LANGUAGE['action_users'] .'</a></td>
+							  <td><a href="'. $MyConfig['http_adress'] . '/mumble/index.php?server_id='. $_GET['server_id'] .'&display=viewer" class="custom-metro cm-brown"><i class="fa fa-eye"></i> '. $LANGUAGE['action_viewer'] .'</a></td>
 							</tr>
 						  </tbody>
 						</table>
@@ -161,7 +161,7 @@ echo '
 			<h3 class="center">'. $LANGUAGE['overview_delete_title'] .'</h3>
 			<p style="text-align: center;"></p>
 
-				<form action="'. $MyConfig['http_adress'] . '/mumble/delete-server" method="post" class="center" id="deleteserver">
+				<form action="'. $MyConfig['http_adress'] . '/mumble/index.php?display=actions&delete-server" method="post" class="center" id="deleteserver">
 					<input type="hidden" name="server_id" value="'.$Server->id().'">
 					<div style="width: 500px; text-align:center;"><a href="#" onclick="deleteserver.submit();" class="custom-metro cm-green cm-auto">'. $LANGUAGE['overview_delete_btn_yes'] .'</a> <a href="#" onclick="$(\'#delete-server\').dialog(\'close\'); return false;"class="custom-metro cm-red cm-auto">'. $LANGUAGE['overview_delete_btn_no'] .'</a></div>
 				</form>
