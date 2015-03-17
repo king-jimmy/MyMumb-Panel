@@ -8,42 +8,42 @@ echo '
 				{
 					if($_POST['type'] == 'new-user')
 					{
-						try 
+						try
 						{
 							$userInfos = array();
 							if(isset($_POST['username']) && $_POST['username'] != "")
 								$userInfos[0] = $_POST['username'];
-								
+
 							if(isset($_POST['password']) && $_POST['password'] != "")
 								$userInfos[4] = $_POST['password'];
-								
-								
-							if(isset($_POST['username']) && $_POST['username'] != "" or isset($_POST['password']) && $_POST['password'] != "" )	
+
+
+							if(isset($_POST['username']) && $_POST['username'] != "" or isset($_POST['password']) && $_POST['password'] != "" )
 								$Server->registerUser($userInfos);
 							else
 								$AlertMessage = '';
 						}
-						catch (Exception $e) 
+						catch (Exception $e)
 						{
 							echo '<div class="alert alert-danger" style="text-align:center;">'. $LANGUAGE['users_alert_alreadyexist'] .'</div>';
 						}
 					}
-					
+
 					if($_POST['type'] == 'edit-user')
 					{
-						try 
+						try
 						{
 							$userInfos = array();
 							if(isset($_POST['username']) && $_POST['username'] != "")
 								$userInfos[0] = $_POST['username'];
-								
+
 							if(isset($_POST['password']) && $_POST['password'] != "")
 								$userInfos[4] = $_POST['password'];
-								
+
 							$Server->updateRegistration(intval($_POST['userid']), $userInfos);
-							
+
 						}
-						catch (Exception $e) 
+						catch (Exception $e)
 						{
 							echo '<div class="alert alert-danger" style="text-align:center;">'. $LANGUAGE['users_alert_alreadyexist'] .'</div>';
 						}
@@ -51,16 +51,16 @@ echo '
 				}
 				if(isset($_GET['delete']))
 				{
-					try 
+					try
 					{
 						$Server->unregisterUser(intval($_GET['delete']));
-					} 
-					catch (Exception $e) 
+					}
+					catch (Exception $e)
 					{
 						echo '<div class="alert alert-danger" style="text-align:center;">'. ( $_GET['delete'] == 0 ? $LANGUAGE['users_alert_cantdelete'] : $LANGUAGE['users_alert_deletenotfound']).'</div>';
 					}
 				}
-				try 
+				try
 				{
 			echo '
 				<center>
@@ -79,7 +79,7 @@ echo '
 					</form>
 				</center>';
 				}
-				catch (Exception $e) 
+				catch (Exception $e)
 				{
 					echo '<div class="alert alert-danger" style="text-align:center;">'. $LANGUAGE['users_alert_usernotfound'] .'</div>';
 					echo '
@@ -106,7 +106,7 @@ echo '
 							<th width="300px">'. $LANGUAGE['users_header_lastconnect'] .'</th>
 							<th width="250px" style="text-align: center;">'. $LANGUAGE['users_header_action'] .'</th>
 						</tr>';
-						
+
 						foreach($Server->getRegisteredUsers('') as $userId=>$userName)
 						{
 							if($userName != "SuperUser")
@@ -116,15 +116,14 @@ echo '
 									<td style="text-align: center; width: 40px;"><img src="'. $MyConfig['http_adress'] .'/template/images/user-big.png" width="25" height="25"/></td>
 									<td>'. $userName .'</td>
 									<td>'. ( $Server->getRegistration(intval($userId))[5] == '' ? $LANGUAGE['user_neverconnected'] : $Server->getRegistration(intval($userId))[5]) .'</td>
-									<td><a href="'. $MyConfig['http_adress'] .'/mumble/index.php?server_id='. $_GET['server_id'] .'&display=users&edit='. $userId .'" class="custom-metro cm-small cm-blue2">'. $LANGUAGE['users_btn_edit'] .'</a> <a href="'. $MyConfig['http_adress'] .'/mumble/index.php?server_id='. $_GET['server_id'] .'&display=users&delete='. $userId .'" class="custom-metro cm-small cm-red">'. $LANGUAGE['users_btn_delete'] .'</a></td>
-								</tr>';
+									<td><a href="'. $MyConfig['http_adress'] .'/mumble/index.php?server_id='. $_GET['server_id'] .'&display=users&edit='. $userId .'" class="custom-metro cm-small cm-blue2">'. $LANGUAGE['users_btn_edit'] .'</a> <a href="'. $MyConfig['http_adress'] .'/mumble/index.php?server_id='. $_GET['server_id'] .'&display=users&delete='. $userId .'" class="custom-metro cm-small cm-red">'. $LANGUAGE['users_btn_delete'] .'</a></td></tr>';
 							}
 						}
 						echo '
 				</table>
 			</div>
 			<div class="clear"></div>';
-		
+
 }
 else
 {
