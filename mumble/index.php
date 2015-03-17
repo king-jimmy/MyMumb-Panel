@@ -175,9 +175,5 @@ echo '
   </body>
 </html>
 ';
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> a6e91bd02f7b256a7c39ab445968b13a8bcde66f
 ?>
