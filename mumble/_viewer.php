@@ -19,7 +19,16 @@
           for ($i=0; $i<$indent; $i++)
             echo '<span class="indent-channel"> </span>';
           echo '<span class="indent-user"> </span>';
-          echo '<span id="'. $user->userid .'">'. $user->name .'</span>';
+          echo '<span id="'. $user->userid .'" class="user">';
+          if ($user->mute)
+            echo ' <i style="color:#027A9D;" class="fa fa-microphone-slash"></i> ';
+          if ($user->selfMute)
+            echo ' <i style="color:#C73C34;" class="fa fa-microphone-slash"></i> ';
+          if ($user->deaf)
+            echo ' <i style="color:#027A9D;" class="fa fa-volume-off"></i> ';
+          if ($user->selfDeaf)
+            echo ' <i style="color:#C73C34;" class="fa fa-volume-off"></i> ';
+          echo $user->name .'</span>';
         }
         echo (!empty($tree->users)) ? '<br>' : '';
         foreach($tree->children as $channel)
