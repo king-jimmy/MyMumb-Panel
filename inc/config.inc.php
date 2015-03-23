@@ -8,7 +8,7 @@
 
 	$MyConfig['ICE_Password'] = '';
 
-	$MyConfig['http_adress'] = 'http://mumb.ovh/new/MyMumb-Panel';
+	$MyConfig['http_adress'] = 'http://127.0.0.1';
 
 	$MyConfig['default_language'] = 'en_EN';
 
