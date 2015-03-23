@@ -56,6 +56,8 @@
 		$LANGUAGE['overview_port'] = "Server Port:";
 		$LANGUAGE['overview_slots'] = "Slots:";
 		$LANGUAGE['overview_superpass'] = "Password SuperUser:";
+		$LANGUAGE['overview_regen_sp'] = "Regenerate";
+		$LANGUAGE['overview_sp_changed'] = "The password 'SuperUser' has been edited.";
 		$LANGUAGE['overview_delete'] = "Delete the server";
 		
 		$LANGUAGE['overview_delete_title'] = "Do you really want to delete this server?";

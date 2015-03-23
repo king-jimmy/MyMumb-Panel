@@ -1,4 +1,11 @@
 <?php
+
+	function random_chars($n)
+	{
+		$alfa= 'abcdefghijklmnpqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ0123456789';
+		return substr(str_shuffle($alfa),0,$n);
+	}	
+
 	if(isset($_GET['start']))
 	{
 		if($Server->isRunning())
@@ -6,7 +13,6 @@
 		else
 		{
 			echo '<br><center><div class="alert alert-success">'. $LANGUAGE['action_start_success'] .'</div></center>';
-
 			$Server->start();
 		}
 	}
@@ -19,7 +25,17 @@
 			$Server->stop();
 		}
 		$Server->start();
+	}
 
+	if(isset($_GET['resetsupwd']))
+	{
+		$pw = random_chars(8);
+		$Server->setConf('SuperUserPassword', $pw);
+		$Server->setSuperuserPassword($pw);
+		echo '<script language="javascript">
+				document.getElementById("superuser_password").innerHTML = "'.$pw.'"; 
+			  </script>';
+		echo '<br><center><div class="alert alert-success">'. $LANGUAGE['overview_sp_changed'] .'</div></center>';
 	}
 	
 	if(isset($_GET['stop']))
@@ -47,13 +63,7 @@
 		}
 		return false;
 	}
-				
-	function random_chars($n)
-	{
-		$alfa= 'abcdefghijklmnpqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ0123456789';
-		return substr(str_shuffle($alfa),0,$n);
-	}	
-	
+					
 	if(isset($_GET['create-server']))
 	{
 		$serverName = $_POST['serverName'];
