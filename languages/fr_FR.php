@@ -56,6 +56,8 @@
 		$LANGUAGE['overview_port'] = "Port du serveur:";
 		$LANGUAGE['overview_slots'] = "Slots:";
 		$LANGUAGE['overview_superpass'] = "Mot de passe SuperUser:";
+		$LANGUAGE['overview_regen_sp'] = "Régénérer";
+		$LANGUAGE['overview_sp_changed'] = "Le mot de passe 'SuperUser' a été modifié.";
 		$LANGUAGE['overview_delete'] = "Supprimer le serveur";
 		
 		$LANGUAGE['overview_delete_title'] = "Souhaitez-vous vraiment supprimer ce serveur?";

@@ -4,7 +4,6 @@ require 'Ice.php';
 require '../inc/Murmur.php';
 session_start();
 
-
 if(!isset($_SESSION['host']))
 {
 	header('location: '.$MyConfig['http_adress']);
@@ -20,21 +19,12 @@ else
 	$MasterServer = $base->ice_checkedCast("::Murmur::Meta")->ice_context($Password);
 }
 
-
-
 if(file_exists('../languages/'.$MyConfig['default_language'].'.php'))
 {
 	include '../languages/'.$MyConfig['default_language'].'.php';
 }
 else
 	die("ERROR, LANGUAGE FILE DOSEN'T EXIST.");
-
-
-
-
-
-
-
 
 echo '
 <!DOCTYPE html>
@@ -76,7 +66,6 @@ echo '
             <li><a href="'. $MyConfig['http_adress'] .'/?logout">'.$LANGUAGE['mumble_menu_logout'].'</a></li>
           </ul>
         </div>
-
       </div>
     </div>';
 
@@ -85,66 +74,58 @@ echo '
 	{
 		if(isset($_GET['server_id']))
 		{
-		$Server = $MasterServer->getServer(intval($_GET['server_id']))->ice_context($Password);
-		$ServerPort = $Server->getConf('port');
-		$ServerPort = (!empty($ServerPort))?$ServerPort:'64738';
-
-		echo '<div class="container"><br>
-				<h3>'. str_replace('{ID}', $Server->id(), $LANGUAGE['mumble_server_title']) .'</h3>
-				<h1 style="text-align:center;">'. $LANGUAGE['overview_title'] .'</h1>
-				<div class="well" style="width:80%; margin: 0 auto">
-					<div class="row">
-						<div class="col-sm-3"></div>
-						<div class="col-sm-4">'. $LANGUAGE['overview_hostname'] .' </div>
-						<div class="col-sm-5">'. ($_SESSION['host'] == '127.0.0.1' ? $_SERVER['SERVER_ADDR'] : $_SESSION['host']) .'</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-3"></div>
-						<div class="col-sm-4">'. $LANGUAGE['overview_port'] .' </div>
-						<div class="col-sm-5">'. $ServerPort .'</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-3"></div>
-						<div class="col-sm-4">'. $LANGUAGE['overview_slots'] .'</div>
-						<div class="col-sm-5">'. $Server->getConf('users') .' Slots</div>
-					</div>
-
-					<div class="row">
-						<form action="" method="POST" id="newSUPW">
+			$Server = $MasterServer->getServer(intval($_GET['server_id']))->ice_context($Password);
+			$ServerPort = $Server->getConf('port');
+			$ServerPort = (!empty($ServerPort))?$ServerPort:'64738';
+			echo '<div class="container"><br>
+					<h3>'. str_replace('{ID}', $Server->id(), $LANGUAGE['mumble_server_title']) .'</h3>
+					<h1 style="text-align:center;">'. $LANGUAGE['overview_title'] .'</h1>
+					<div class="well" style="width:80%; margin: 0 auto">
+						<div class="row">
+							<div class="col-sm-3"></div>
+							<div class="col-sm-4">'. $LANGUAGE['overview_hostname'] .' </div>
+							<div class="col-sm-5">'. ($_SESSION['host'] == '127.0.0.1' ? $_SERVER['SERVER_ADDR'] : $_SESSION['host']) .'</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3"></div>
+							<div class="col-sm-4">'. $LANGUAGE['overview_port'] .' </div>
+							<div class="col-sm-5">'. $ServerPort .'</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3"></div>
+							<div class="col-sm-4">'. $LANGUAGE['overview_slots'] .'</div>
+							<div class="col-sm-5">'. $Server->getConf('users') .' Slots</div>
+						</div>
+						<div class="row">
 							<div class="col-sm-3"></div>
 							<div class="col-sm-4">'. $LANGUAGE['overview_superpass'] .' </div>
-							<div class="col-sm-5">'. $Server->getConf('SuperUserPassword') .'<input type="hidden" name="type" value="newSuperPassword"><span style="position:absolute; margin-left:20px;" class="label label-success"><a href="#" onclick="newSUPW.submit();" style="color:#FFF;">Régénérer</span></a></div>
-						</form>
+							<div class="col-sm-5"><span id="superuser_password">'. $Server->getConf('SuperUserPassword') .'</span><input type="hidden" name="type" value="newSuperPassword"><span style="position:absolute; margin-left:20px;" class="label label-success"><a href="'. $MyConfig['http_adress'] . '/mumble/index.php?server_id='. $_GET['server_id'] .'&display=actions&resetsupwd" style="color:#FFF;">'. $LANGUAGE['overview_regen_sp'] .'</span></a></div>
+						</div>
+						<center><br>
+							<a href="#" onclick="$(\'#delete-server\').dialog(\'open\'); return false;" ><img src="'. $MyConfig['http_adress'] .'/template/images/delete.png" height="25" width="25">'. $LANGUAGE['overview_delete'] .'</a>
+						</center>
 					</div>
-					<center><br>
-						<a href="#" onclick="$(\'#delete-server\').dialog(\'open\'); return false;" ><img src="'. $MyConfig['http_adress'] .'/template/images/delete.png" height="25" width="25">'. $LANGUAGE['overview_delete'] .'</a>
-					</center>
-				</div>
-				<div class="well" style="width:700px; margin: 0 auto; margin-top:5px;">
-					<center>
-						<table style="text-align: center; border:0 !important;" border="0" cellpadding="2" cellspacing="2">
-						  <tbody>
-							<tr>
-							  <td style="width:33%"><a href="'. $MyConfig['http_adress'] . '/mumble/index.php?server_id='. $_GET['server_id'] .'&display=actions&start" class="custom-metro cm-green"><i class="fa fa-play-circle"></i> '. $LANGUAGE['action_start'] .'</a></td>
-							  <td style="width:33%"><a href="'. $MyConfig['http_adress'] . '/mumble/index.php?server_id='. $_GET['server_id'] .'&display=actions&restart" class="custom-metro cm-blue"><i class="fa fa-repeat"></i> '. $LANGUAGE['action_restart'] .'</a></td>
-							  <td style="width:33%"><a href="'. $MyConfig['http_adress'] . '/mumble/server/'. $_GET['server_id'] .'&display=actions&stop" class="custom-metro cm-red"><i class="fa fa-square"></i> '. $LANGUAGE['action_stop'] .'</a></td>
-							</tr>
-							<tr>
-							  <td><a href="'. $MyConfig['http_adress'] . '/mumble/index.php?server_id='. $_GET['server_id'] .'&display=config" class="custom-metro cm-brown"><i class="fa fa-file-text"></i> '. $LANGUAGE['action_config'] .'</a></td>
-							  <td><a href="'. $MyConfig['http_adress'] . '/mumble/index.php?server_id='. $_GET['server_id'] .'&display=users" class="custom-metro cm-brown"><i class="fa fa-users"></i> '. $LANGUAGE['action_users'] .'</a></td>
-							  <td><a href="'. $MyConfig['http_adress'] . '/mumble/index.php?server_id='. $_GET['server_id'] .'&display=viewer" class="custom-metro cm-brown"><i class="fa fa-eye"></i> '. $LANGUAGE['action_viewer'] .'</a></td>
-							</tr>
-						  </tbody>
-						</table>
-					</center>
-				</div>
-		';
+					<div class="well" style="width:700px; margin: 0 auto; margin-top:5px;">
+						<center>
+							<table style="text-align: center; border:0 !important;" border="0" cellpadding="2" cellspacing="2">
+							  <tbody>
+								<tr>
+								  <td style="width:33%"><a href="'. $MyConfig['http_adress'] . '/mumble/index.php?server_id='. $_GET['server_id'] .'&display=actions&start" class="custom-metro cm-green"><i class="fa fa-play-circle"></i> '. $LANGUAGE['action_start'] .'</a></td>
+								  <td style="width:33%"><a href="'. $MyConfig['http_adress'] . '/mumble/index.php?server_id='. $_GET['server_id'] .'&display=actions&restart" class="custom-metro cm-blue"><i class="fa fa-repeat"></i> '. $LANGUAGE['action_restart'] .'</a></td>
+								  <td style="width:33%"><a href="'. $MyConfig['http_adress'] . '/mumble/server/'. $_GET['server_id'] .'&display=actions&stop" class="custom-metro cm-red"><i class="fa fa-square"></i> '. $LANGUAGE['action_stop'] .'</a></td>
+								</tr>
+								<tr>
+								  <td><a href="'. $MyConfig['http_adress'] . '/mumble/index.php?server_id='. $_GET['server_id'] .'&display=config" class="custom-metro cm-brown"><i class="fa fa-file-text"></i> '. $LANGUAGE['action_config'] .'</a></td>
+								  <td><a href="'. $MyConfig['http_adress'] . '/mumble/index.php?server_id='. $_GET['server_id'] .'&display=users" class="custom-metro cm-brown"><i class="fa fa-users"></i> '. $LANGUAGE['action_users'] .'</a></td>
+								  <td><a href="'. $MyConfig['http_adress'] . '/mumble/index.php?server_id='. $_GET['server_id'] .'&display=viewer" class="custom-metro cm-brown"><i class="fa fa-eye"></i> '. $LANGUAGE['action_viewer'] .'</a></td>
+								</tr>
+							  </tbody>
+							</table>
+						</center>
+					</div>';
 		}
-
-
 		if(file_exists('_'.$_GET['display'].'.php'))
 			include '_'.$_GET['display'].'.php';
-
 		echo '</div>';
 	}
 	else
@@ -155,23 +136,18 @@ echo '
 			die('ERROR');
 	}
 
-
 	echo '
-
 		<div id="delete-server" class="floatingdialog">
 			<h3 class="center">'. $LANGUAGE['overview_delete_title'] .'</h3>
 			<p style="text-align: center;"></p>
-
 				<form action="'. $MyConfig['http_adress'] . '/mumble/index.php?display=actions&delete-server" method="post" class="center" id="deleteserver">
 					<input type="hidden" name="server_id" value="'.$Server->id().'">
 					<div style="width: 500px; text-align:center;"><a href="#" onclick="deleteserver.submit();" class="custom-metro cm-green cm-auto">'. $LANGUAGE['overview_delete_btn_yes'] .'</a> <a href="#" onclick="$(\'#delete-server\').dialog(\'close\'); return false;"class="custom-metro cm-red cm-auto">'. $LANGUAGE['overview_delete_btn_no'] .'</a></div>
 				</form>
-
 		</div>
 		<script type="text/javascript">
 			newFlexibleDialog("delete-server", 550);
 		</script>
-
   </body>
 </html>
 ';
