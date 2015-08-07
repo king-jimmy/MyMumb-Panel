@@ -3,17 +3,15 @@
 	$MyConfig = array();
 
 
-	$MyConfig['default_host'] = '127.0.0.1';
-	$MyConfig['default_port'] = 6502;
+	$MyConfig['default_host'] = '127.0.0.1'; //Ip of your Mumble Server. If its the same Server no need to change it.
+	$MyConfig['default_port'] = 6502; //The Port of your Mumble Server
 
-	$MyConfig['ICE_Password'] = '';
+	$MyConfig['ICE_Password'] = 'icesecret'; //The Password used in the mumble-server.ini 
 
-	$MyConfig['http_adress'] = 'http://127.0.0.1';
+	$MyConfig['default_language'] = 'en_EN'; //Change the Language currently supported en_EN fr_FR de_DE
 
-	$MyConfig['default_language'] = 'en_EN';
-
-	$MyConfig['use_login_protection'] = true;
-	$MyConfig['Username'] = '';
-	$MyConfig['Password'] = '';
+	$MyConfig['use_login_protection'] = false; //Change to true if using the below and not the ICE Secret
+	$MyConfig['Username'] = 'Username';
+	$MyConfig['Password'] = 'MD5 Decrypted Password';
 
 ?>

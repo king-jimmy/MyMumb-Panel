@@ -2,7 +2,7 @@
 if($Server->isRunning())
 {
 echo '
-			<h1 style="text-align:center;">Liste des Utilisateurs</h1>
+			<h1 style="text-align:center;">'.$LANGUAGE['user_list'].'</h1>
 			<div class="well">';
 			if(isset($_POST['type']))
 				{
@@ -113,10 +113,10 @@ echo '
 							{
 								echo '
 								<tr>
-									<td style="text-align: center; width: 40px;"><img src="'. $MyConfig['http_adress'] .'/template/images/user-big.png" width="25" height="25"/></td>
+									<td style="text-align: center; width: 40px;"><img src="../template/images/user-big.png" width="25" height="25"/></td>
 									<td>'. $userName .'</td>
 									<td>'. ( $Server->getRegistration(intval($userId))[5] == '' ? $LANGUAGE['user_neverconnected'] : $Server->getRegistration(intval($userId))[5]) .'</td>
-									<td><a href="'. $MyConfig['http_adress'] .'/mumble/index.php?server_id='. $_GET['server_id'] .'&display=users&edit='. $userId .'" class="custom-metro cm-small cm-blue2">'. $LANGUAGE['users_btn_edit'] .'</a> <a href="'. $MyConfig['http_adress'] .'/mumble/index.php?server_id='. $_GET['server_id'] .'&display=users&delete='. $userId .'" class="custom-metro cm-small cm-red">'. $LANGUAGE['users_btn_delete'] .'</a></td>
+									<td><a href="./index.php?server_id='. $_GET['server_id'] .'&display=users&edit='. $userId .'" class="custom-metro cm-small cm-blue2">'. $LANGUAGE['users_btn_edit'] .'</a> <a href="./index.php?server_id='. $_GET['server_id'] .'&display=users&delete='. $userId .'" class="custom-metro cm-small cm-red">'. $LANGUAGE['users_btn_delete'] .'</a></td>
 								</tr>';
 							}
 						}

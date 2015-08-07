@@ -95,11 +95,11 @@
 			$newServer->setSuperuserPassword($pw);
 			
 
-			header('location: '.$MyConfig['http_adress'].'/mumble/index.php?server_id='.$newServerID.'&display=overview');
+			header('location: ../index.php?server_id='.$newServerID.'&display=overview');
 		}	
 		else
 		{
-			header('location: '.$MyConfig['http_adress'].'/mumble');
+			header('location: ../');
 		}
 	}
 	
@@ -113,7 +113,7 @@
 			
 		$Server->delete();
 			
-		header('location: '.$MyConfig['http_adress'].'/mumble');
+		header('location: ../');
 	}
 	
 	

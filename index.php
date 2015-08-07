@@ -91,7 +91,7 @@ echo '
 								$_SESSION['port'] = $MyConfig['default_port'];
 								$_SESSION['password'] = $MyConfig['ICE_Password'];
 								
-								header('location: '.$MyConfig['http_adress'].'/mumble');
+								header('location: ./mumble');
 								
 							}
 							catch (Exception $e) 
@@ -132,7 +132,7 @@ echo '
 								$_SESSION['port'] = $_POST['login_port'];
 								$_SESSION['password'] = $_POST['login_password'];
 								
-								header('location: '.$MyConfig['http_adress'].'/mumble');
+								header('location: ../');
 								
 							}
 							catch (Exception $e) 

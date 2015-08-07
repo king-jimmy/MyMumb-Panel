@@ -48,6 +48,8 @@
 		$LANGUAGE['servers_connectedto'] = "You are currently connected to the server {SERVER_INFOS}";
 		$LANGUAGE['servers_countservers'] = "Servers:";
 		$LANGUAGE['servers_countslots'] = "Slots:";
+		$LANGUAGE['server_status_online'] = "Online";
+		$LANGUAGE['server_status_offline'] = "Offline";
 		
 		
 		$LANGUAGE['overview_title'] = "Server Details";
@@ -107,6 +109,7 @@
 		$LANGUAGE['users_input_password'] = "Password";
 		$LANGUAGE['users_input_password_help'] = "Choose a password";
 		$LANGUAGE['user_neverconnected'] = "Never connected";
+		$LANGUAGE['user_list'] = "List of Users";
 		
 		
 		$LANGUAGE['users_alert_usernotfound'] = "Unable to find the user.";
