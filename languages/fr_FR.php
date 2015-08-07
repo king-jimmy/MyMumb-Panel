@@ -51,6 +51,7 @@
 		$LANGUAGE['servers_countslots'] = "Slots:";
 		$LANGUAGE['server_status_online'] = "En-Ligne";
 		$LANGUAGE['server_status_offline'] = "Hors-Ligne";
+		$LANGUAGE['server_slots_in_use'] = "Slots actuellement en usage";
 		
 		
 		$LANGUAGE['overview_title'] = "Détails du serveur";

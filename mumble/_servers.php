@@ -50,10 +50,13 @@ echo '
 			$Server = $Server->ice_context($Password);
 		
 		echo '
-			<div class="server" onclick="window.location.href=\'../mumble/index.php?server_id='. $Server->id() .'&display=overview' .'\';">
+			<div class="server" onclick="window.location.href=\'./index.php?server_id='. $Server->id() .'&display=overview' .'\';">
 						<span style="font-size: 16px; font-weight: bold; display: block; margin-bottom: 5px; text-align:center;">'. $Server->getConf('registername') .'</span>
 						<center><img src="../template/images/mumble.png" width="150" height="150"><br><br>';
 						echo ( $Server->isRunning() ? '<span class="label label-success">'.$LANGUAGE['server_status_online'].'</span>' : '<span class="label label-danger">'.$LANGUAGE['server_status_offline'].'</span>' ) .'
+						<br>'
+						echo (''.'/'.$Count['Slots'].' '.$LANGUAGE['server_slots_in_use']);
+						'
 					</center>
 			</div>';
 			

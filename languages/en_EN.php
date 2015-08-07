@@ -50,6 +50,7 @@
 		$LANGUAGE['servers_countslots'] = "Slots:";
 		$LANGUAGE['server_status_online'] = "Online";
 		$LANGUAGE['server_status_offline'] = "Offline";
+		$LANGUAGE['server_slots_in_use'] = "Current Slots in Use";
 		
 		
 		$LANGUAGE['overview_title'] = "Server Details";
