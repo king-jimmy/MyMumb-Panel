@@ -95,6 +95,8 @@
 		$LANGUAGE['config_mustbeonline'] = "Your server must be online.";
 		$LANGUAGE['config_btn_save'] = "Save";
 		$LANGUAGE['config_btn_cancel'] = "Cancel";
+		$LANGUAGE['config_port'] = "Server Port";
+		$LANGUAGE['config_port_hint'] = "Here you can change the Server Port";
 		
 		
 		$LANGUAGE['users_title'] = "Registered Users";

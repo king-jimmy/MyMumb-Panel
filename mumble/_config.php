@@ -15,6 +15,9 @@
 				
 			if(isset($_POST['defaultchannel']) && $_POST['defaultchannel'] != $Server->getConf('defaultchannel'))
 				$Server->setConf('defaultchannel', $_POST['defaultchannel']);
+			
+			if(isset($_POST['port']) && $_POST['port'] != $Server->getConf('port'))
+				$Server->setConf('port', $_POST['port']);
 				
 			if(isset($_POST['serverSlots']) && $_POST['serverSlots'] != $Server->getConf('users'))
 				$Server->setConf('users', $_POST['serverSlots']);
@@ -57,6 +60,10 @@ echo '
 							  <td><textarea name="welcometext" class="form-control" placeholder="'. $LANGUAGE['config_welcomemessage_hint'] .'">'. $Server->getConf('welcometext') .'</textarea></td>
 							</tr>
 							<tr>
+								<td><b>'. $LANGUAGE['config_port'] .'</b></td>
+							  <td><input type="text" name="port" class="form-control" placeholder="'. $LANGUAGE['config_port_hint'] .'" value="'. $Server->getConf('port') .'"></td>
+							</tr>
+							<tr>
 								<td><b>'. $LANGUAGE['config_maxslots'] .'</b></td>
 							  <td>
 								<select class="form-control" name="serverSlots">';
@@ -93,7 +100,7 @@ echo '
 						  </tbody>
 						</table>
 						<br>
-						<div style="width: 500px;"><a href="#" onclick="save.submit();" class="custom-metro cm-green cm-auto">'. $LANGUAGE['config_btn_save'] .'</a> <a href="" class="custom-metro cm-red cm-auto">'. $LANGUAGE['config_btn_cancel'] .'</a></div>
+						<div style="width: 500px;"><a href="#" onclick="save.submit();" class="custom-metro cm-green cm-auto">'. $LANGUAGE['config_btn_save'] .'</a> <a href="?server_id='. $_GET['server_id'] .'&display=overview" class="custom-metro cm-red cm-auto">'. $LANGUAGE['config_btn_cancel'] .'</a></div>
 					</form>
 				</center>
 			</div>
