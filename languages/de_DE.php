@@ -50,6 +50,7 @@
 		$LANGUAGE['servers_countslots'] = "Anzahl User gesamt:";
 		$LANGUAGE['server_status_online'] = "Status: An";
 		$LANGUAGE['server_status_offline'] = "Status: Aus";
+		$LANGUAGE['server_slots_in_use'] = "Anzahl genutzte Slots";
 		
 		
 		$LANGUAGE['overview_title'] = "Server Details";
@@ -94,7 +95,8 @@
 		$LANGUAGE['config_mustbeonline'] = "Dein Server muss Online sein.";
 		$LANGUAGE['config_btn_save'] = "Speichern";
 		$LANGUAGE['config_btn_cancel'] = "Abbrechen";
-		
+		$LANGUAGE['config_port'] = "Server Port";
+		$LANGUAGE['config_port_hint'] = "Hier kannst du den Port des Servers setzen.";
 		
 		$LANGUAGE['users_title'] = "Registrierte Benutzer";
 		$LANGUAGE['users_header_name'] = "Name";
