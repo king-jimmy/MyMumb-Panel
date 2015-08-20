@@ -15,7 +15,7 @@ else
 	$ICE = Ice_initialize();
 	$ip = $_SESSION['host'];
 	$port = $_SESSION['port'];
-	$base = $ICE->stringToProxy("Meta:tcp -h $ip -p $port");
+	$base = $ICE->stringToProxy($MyConfig['MetaConnection']." -h $ip -p $port");
 	$MasterServer = $base->ice_checkedCast("::Murmur::Meta")->ice_context($Password);
 }
 

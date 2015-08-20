@@ -14,4 +14,12 @@
 	$MyConfig['Username'] = 'Username';
 	$MyConfig['Password'] = 'MD5 Decrypted Password';
 
+	
+	
+	/*
+	**	Edit the following line ONLY if you have trouble for connection
+	**	Comment the first line and uncomment the other.
+	*/
+		$MyConfig['MetaConnection'] = "Meta:tcp";
+		//$MyConfig['MetaConnection'] = "Meta -e 1.0:tcp";
 ?>
