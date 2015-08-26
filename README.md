@@ -10,7 +10,7 @@ MyMumb - Panel
 ##### Installation of Zeroc ICE
 First you need to install Zeroc Ice:
 ```sh
-apt-get install php-zeroc-ice
+apt-get install zeroc-ice php-zeroc-ice
 ```
 
 Now you have to enable the library for PHP and add the Library itself to the include Path of PHP.
@@ -21,16 +21,6 @@ You can do this in the 20-IcePHP.ini This file should be located in the /etc/php
 include_path=/usr/share/Ice-3.5.1/php/lib
 extension=IcePHP.so
 ```
-
-#### Enabling mod_rewrite
-
-You can enable the mod_rewrite by typing :
-```sh
-a2enmod rewrite
-```
-
-It's not finished yet, you must change your vhost configuration.
-You must turn the AllowOverride to 'All'
 
 ### Murmur Configuration
 Before continuing you must configure murmur to use Ice.
@@ -66,42 +56,23 @@ Now open `config.inc.php` and edit it as you want
 
 Three languages are available, English (en_EN), German (de_DE) and French (fr_FR).
 
+## Required files generation
+Now you have to generate the `murmur.php`
 
-Now you need to change which Murmur.php you are using.
-Since you already are in the inc directory change the Name of the Murmur ICE X.X.X.php 
-which is aplicable for your version of ICE to Murmur.php
-
-Most users should be able to use the 3.4.2 one. If that login wont work try the 3.5.1 instead.
-
-If both are not working and you have a different ICE Version then 3.4.2 or 3.5.1 you have to create the
-Murmur.php manually. This can be done on Linux this way:
-
-You have to change the sections for the ICE Version to fit your directorys and needs.
-
-
-Change to the inc directory where this README is located.
-
+If you have installed murmur by the apt-get command :
 ```sh
-cp /usr/share/murmur/Murmur.ice murmur_1.2.5.ice 
-slice2php -I/usr/share/Ice-3.5.1/slice/ --ice murmur_1.2.5.ice
+slice2php -I/usr/share/Ice-3.5.1/slice/ --ice /usr/share/murmur/Murmur.ice
+cp /usr/share/murmur/Murmur.php <"PanelPath"/inc/Murmur.php>
 ```
-
 (The Path for Ice could differ here. Use the one which fits you. 
 Please leave the -I at the beginning since it specifies the Input)
 
-After that
- 
+If not, you have to go in the directory of your murmur server
+Then go in the folder 'ice'
 ```sh
-rm murmur_1.2.5.ice 
+slice2php -I/usr/share/Ice-3.5.1/slice/ --ice Murmur.ice
+cp Murmur.php <"PanelPath"/inc/Murmur.php>
 ```
 
-You now should have a murmur_1.2.5.ice.php in your folder.
+And 'Voila' your panel is ready to be use.
 
-Delete the old Murmur.php or rename it to the Version before 
-and change the Name of your newly created murmur_*.ice.php to Murmur.php
-
-You should now be able to login.
-
-
-
-Thanks for this to shmap from the mumb1e forums. Source: http://www.mumb1e.de/en/forum/8-support/1539-blank-page#2048
