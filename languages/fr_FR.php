@@ -49,6 +49,9 @@
 		$LANGUAGE['servers_connectedto'] = "Vous êtes actuellement connecté au serveur {SERVER_INFOS}";
 		$LANGUAGE['servers_countservers'] = "Serveurs:";
 		$LANGUAGE['servers_countslots'] = "Slots:";
+		$LANGUAGE['server_status_online'] = "En-Ligne";
+		$LANGUAGE['server_status_offline'] = "Hors-Ligne";
+		$LANGUAGE['server_slots_in_use'] = "Slots actuellement en usage";
 		
 		
 		$LANGUAGE['overview_title'] = "Détails du serveur";
@@ -92,6 +95,8 @@
 		$LANGUAGE['config_mustbeonline'] = "Le serveur doit être en ligne.";
 		$LANGUAGE['config_btn_save'] = "Sauvegarder";
 		$LANGUAGE['config_btn_cancel'] = "Annuler";
+		$LANGUAGE['config_port'] = "Port du serveur";
+		$LANGUAGE['config_port_hint'] = "Ici vous pouvez changer le port du serveur";
 		
 		
 		$LANGUAGE['users_title'] = "Utilisateurs enregistrés";
@@ -107,6 +112,7 @@
 		$LANGUAGE['users_input_password'] = "Mot de passe";
 		$LANGUAGE['users_input_password_help'] = "Choisissez un mot de passe";
 		$LANGUAGE['user_neverconnected'] = "Jamais connecté";
+		$LANGUAGE['user_list'] = "Liste des Utilisateurs";
 		
 		
 		$LANGUAGE['users_alert_usernotfound'] = "Impossible de trouver l'utilisateur.";

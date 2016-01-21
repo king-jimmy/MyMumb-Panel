@@ -8,15 +8,23 @@
 		$Count = array();
 		$Count['Servers'] = 0;
 		$Count['Slots'] = 0;
+		$Count['slotsps'] = 0;
+		$Count['users'] = 0;
 		
 		foreach($Servers as $Server) {
 			$Server = $Server->ice_context($Password);
 			$Count['Servers']++;
 			$Count['Slots'] = $Count['Slots'] + $Server->getConf('users');
-		}
+			$Count['slotsps'] = $Server->getConf('users');
+			if($Server->isRunning()){
+			$Count['users'] = count($Server->getUsers());
+			}
+ 		}
 		return $Count;
 	}
 	$Count = countServerAndSlots();
+	
+
 	
 echo '
 
@@ -50,10 +58,13 @@ echo '
 			$Server = $Server->ice_context($Password);
 		
 		echo '
-			<div class="server" onclick="window.location.href=\''. $MyConfig['http_adress'] . '/mumble/index.php?server_id='. $Server->id() .'&display=overview' .'\';">
+			<div class="server" onclick="window.location.href=\'./index.php?server_id='. $Server->id() .'&display=overview' .'\';">
 						<span style="font-size: 16px; font-weight: bold; display: block; margin-bottom: 5px; text-align:center;">'. $Server->getConf('registername') .'</span>
-						<center><img src="'.$MyConfig['http_adress'].'/template/images/mumble.png" width="150" height="150"><br><br>';
-						echo ( $Server->isRunning() ? '<span class="label label-success">En-Ligne</span>' : '<span class="label label-danger">Hors-Ligne</span>' ) .'
+						<center><img src="../template/images/mumble.png" width="150" height="150"><br><br>';
+						echo ( $Server->isRunning() ? '<span class="label label-success">'.$LANGUAGE['server_status_online'].'</span>' : '<span class="label label-danger">'.$LANGUAGE['server_status_offline'].'</span>' ) .'
+						<br>';
+						echo (   $Server->isRunning() ? count($Server->getUsers()).'/'.$Server->getConf('users').' '.$LANGUAGE['server_slots_in_use'] : '0' .'/ '.$Server->getConf('users').' '.$LANGUAGE['server_slots_in_use']).
+						'
 					</center>
 			</div>';
 			
@@ -63,7 +74,7 @@ echo '
 			
 			<div class="server new-server">
 				<a href="#" onclick="$(\'#new-server\').dialog(\'open\'); return false;" style="margin: 0 auto; margin-top: 97px; padding: 10px 0 0 0; height: 47px; width: 50px; text-align: center;">
-					<img src="'.$MyConfig['http_adress'].'/template/images/plus-white-big.png" />
+					<img src="../template/images/plus-white-big.png" />
 				</a>
 			</div>
 		</div>
@@ -72,7 +83,7 @@ echo '
 
 		<div id="new-server" class="dialogbox">
 			<h3 style="text-align: center;">'.$LANGUAGE['newserver_title'].'</h3>
-			<form action="'. $MyConfig['http_adress'] . '/mumble/index.php?display=actions&create-server" method="post" class="center" id="newserver">
+			<form action="./index.php?display=actions&create-server" method="post" class="center" id="newserver">
 
 				<table style="width: 100%">
 					<tr style="margin-top:10px;">

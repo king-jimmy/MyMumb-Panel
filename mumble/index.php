@@ -15,7 +15,7 @@ else
 	$ICE = Ice_initialize();
 	$ip = $_SESSION['host'];
 	$port = $_SESSION['port'];
-	$base = $ICE->stringToProxy("Meta:tcp -h $ip -p $port");
+	$base = $ICE->stringToProxy($MyConfig['MetaConnection']." -h $ip -p $port");
 	$MasterServer = $base->ice_checkedCast("::Murmur::Meta")->ice_context($Password);
 }
 
@@ -34,17 +34,17 @@ echo '
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>MyMumb - Murmur Server Management </title>
-    <link href="'. $MyConfig['http_adress'] .'/template/css/bootstrap.css" rel="stylesheet">
-	<link href="'. $MyConfig['http_adress'] .'/template/css/default.css" rel="stylesheet">
-	<link href="'. $MyConfig['http_adress'] .'/template/css/font-awesome.min.css" rel="stylesheet">
-	<link href="'. $MyConfig['http_adress'] .'/template/css/jquery/jquery-ui-1.10.3.custom.css" rel="stylesheet"/>
-	<link href="'. $MyConfig['http_adress'] .'/template/css/jquery/default.css" rel="stylesheet" />
+    <link href="../template/css/bootstrap.css" rel="stylesheet">
+	<link href="../template/css/default.css" rel="stylesheet">
+	<link href="../template/css/font-awesome.min.css" rel="stylesheet">
+	<link href="../template/css/jquery/jquery-ui-1.10.3.custom.css" rel="stylesheet"/>
+	<link href="../template/css/jquery/default.css" rel="stylesheet" />
 
 
-    <script src="'. $MyConfig['http_adress'] .'/template/js/jquery.min.js"></script>
-	<script src="'. $MyConfig['http_adress'] .'/template/js/jquery-ui-1.10.3.custom.min.js"></script>
-    <script src="'. $MyConfig['http_adress'] .'/template/js/bootstrap.min.js"></script>
-	<script src="'. $MyConfig['http_adress'] .'/template/js/default.js"></script>
+    <script src="../template/js/jquery.min.js"></script>
+	<script src="../template/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="../template/js/bootstrap.min.js"></script>
+	<script src="../template/js/default.js"></script>
   </head>
   <body>
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -59,11 +59,11 @@ echo '
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="'. $MyConfig['http_adress'].'/mumble">'.$LANGUAGE['mumble_menu_mumbles'].'</a></li>
+            <li><a href="./">'.$LANGUAGE['mumble_menu_mumbles'].'</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="https://github.com/dieonar/MyMumb-Panel">'.$LANGUAGE['mumble_menu_github'].'</a></li>
-            <li><a href="'. $MyConfig['http_adress'] .'/?logout">'.$LANGUAGE['mumble_menu_logout'].'</a></li>
+            <li><a href="../?logout">'.$LANGUAGE['mumble_menu_logout'].'</a></li>
           </ul>
         </div>
       </div>
@@ -99,10 +99,10 @@ echo '
 						<div class="row">
 							<div class="col-sm-3"></div>
 							<div class="col-sm-4">'. $LANGUAGE['overview_superpass'] .' </div>
-							<div class="col-sm-5"><span id="superuser_password">'. $Server->getConf('SuperUserPassword') .'</span><input type="hidden" name="type" value="newSuperPassword"><span style="position:absolute; margin-left:20px;" class="label label-success"><a href="'. $MyConfig['http_adress'] . '/mumble/index.php?server_id='. $_GET['server_id'] .'&display=actions&resetsupwd" style="color:#FFF;">'. $LANGUAGE['overview_regen_sp'] .'</span></a></div>
+							<div class="col-sm-5"><span id="superuser_password">'. $Server->getConf('SuperUserPassword') .'</span><input type="hidden" name="type" value="newSuperPassword"><span style="position:absolute; margin-left:20px;" class="label label-success"><a href="./index.php?server_id='. $_GET['server_id'] .'&display=actions&resetsupwd" style="color:#FFF;">'. $LANGUAGE['overview_regen_sp'] .'</span></a></div>
 						</div>
 						<center><br>
-							<a href="#" onclick="$(\'#delete-server\').dialog(\'open\'); return false;" ><img src="'. $MyConfig['http_adress'] .'/template/images/delete.png" height="25" width="25">'. $LANGUAGE['overview_delete'] .'</a>
+							<a href="#" onclick="$(\'#delete-server\').dialog(\'open\'); return false;" ><img src="../template/images/delete.png" height="25" width="25">'. $LANGUAGE['overview_delete'] .'</a>
 						</center>
 					</div>
 					<div class="well" style="width:700px; margin: 0 auto; margin-top:5px;">
@@ -110,14 +110,14 @@ echo '
 							<table style="text-align: center; border:0 !important;" border="0" cellpadding="2" cellspacing="2">
 							  <tbody>
 								<tr>
-								  <td style="width:33%"><a href="'. $MyConfig['http_adress'] . '/mumble/index.php?server_id='. $_GET['server_id'] .'&display=actions&start" class="custom-metro cm-green"><i class="fa fa-play-circle"></i> '. $LANGUAGE['action_start'] .'</a></td>
-								  <td style="width:33%"><a href="'. $MyConfig['http_adress'] . '/mumble/index.php?server_id='. $_GET['server_id'] .'&display=actions&restart" class="custom-metro cm-blue"><i class="fa fa-repeat"></i> '. $LANGUAGE['action_restart'] .'</a></td>
-								  <td style="width:33%"><a href="'. $MyConfig['http_adress'] . '/mumble/server/'. $_GET['server_id'] .'&display=actions&stop" class="custom-metro cm-red"><i class="fa fa-square"></i> '. $LANGUAGE['action_stop'] .'</a></td>
+								  <td style="width:33%"><a href="./index.php?server_id='. $_GET['server_id'] .'&display=actions&start" class="custom-metro cm-green"><i class="fa fa-play-circle"></i> '. $LANGUAGE['action_start'] .'</a></td>
+								  <td style="width:33%"><a href="./index.php?server_id='. $_GET['server_id'] .'&display=actions&restart" class="custom-metro cm-blue"><i class="fa fa-repeat"></i> '. $LANGUAGE['action_restart'] .'</a></td>
+								  <td style="width:33%"><a href="./index.php?server_id='. $_GET['server_id'] .'&display=actions&stop" class="custom-metro cm-red"><i class="fa fa-square"></i> '. $LANGUAGE['action_stop'] .'</a></td>
 								</tr>
 								<tr>
-								  <td><a href="'. $MyConfig['http_adress'] . '/mumble/index.php?server_id='. $_GET['server_id'] .'&display=config" class="custom-metro cm-brown"><i class="fa fa-file-text"></i> '. $LANGUAGE['action_config'] .'</a></td>
-								  <td><a href="'. $MyConfig['http_adress'] . '/mumble/index.php?server_id='. $_GET['server_id'] .'&display=users" class="custom-metro cm-brown"><i class="fa fa-users"></i> '. $LANGUAGE['action_users'] .'</a></td>
-								  <td><a href="'. $MyConfig['http_adress'] . '/mumble/index.php?server_id='. $_GET['server_id'] .'&display=viewer" class="custom-metro cm-brown"><i class="fa fa-eye"></i> '. $LANGUAGE['action_viewer'] .'</a></td>
+								  <td><a href="./index.php?server_id='. $_GET['server_id'] .'&display=config" class="custom-metro cm-brown"><i class="fa fa-file-text"></i> '. $LANGUAGE['action_config'] .'</a></td>
+								  <td><a href="./index.php?server_id='. $_GET['server_id'] .'&display=users" class="custom-metro cm-brown"><i class="fa fa-users"></i> '. $LANGUAGE['action_users'] .'</a></td>
+								  <td><a href="./index.php?server_id='. $_GET['server_id'] .'&display=viewer" class="custom-metro cm-brown"><i class="fa fa-eye"></i> '. $LANGUAGE['action_viewer'] .'</a></td>
 								</tr>
 							  </tbody>
 							</table>
@@ -140,7 +140,7 @@ echo '
 		<div id="delete-server" class="floatingdialog">
 			<h3 class="center">'. $LANGUAGE['overview_delete_title'] .'</h3>
 			<p style="text-align: center;"></p>
-				<form action="'. $MyConfig['http_adress'] . '/mumble/index.php?display=actions&delete-server" method="post" class="center" id="deleteserver">
+				<form action="./index.php?display=actions&delete-server" method="post" class="center" id="deleteserver">
 					<input type="hidden" name="server_id" value="'.$Server->id().'">
 					<div style="width: 500px; text-align:center;"><a href="#" onclick="deleteserver.submit();" class="custom-metro cm-green cm-auto">'. $LANGUAGE['overview_delete_btn_yes'] .'</a> <a href="#" onclick="$(\'#delete-server\').dialog(\'close\'); return false;"class="custom-metro cm-red cm-auto">'. $LANGUAGE['overview_delete_btn_no'] .'</a></div>
 				</form>

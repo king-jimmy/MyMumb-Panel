@@ -72,7 +72,7 @@ echo '
 								$ICE = Ice_initialize();
 								$ip = $MyConfig['default_host'];
 								$port = $MyConfig['default_port'];
-								$base = $ICE->stringToProxy("Meta:tcp -h $ip -p $port");
+								$base = $ICE->stringToProxy($MyConfig['MetaConnection']." -h $ip -p $port");
 								$meta = $base->ice_checkedCast("::Murmur::Meta")->ice_context($Password);	
 								
 								
@@ -91,7 +91,7 @@ echo '
 								$_SESSION['port'] = $MyConfig['default_port'];
 								$_SESSION['password'] = $MyConfig['ICE_Password'];
 								
-								header('location: '.$MyConfig['http_adress'].'/mumble');
+								header('location: ./mumble');
 								
 							}
 							catch (Exception $e) 
@@ -113,7 +113,7 @@ echo '
 								$ICE = Ice_initialize();
 								$ip = $_POST['login_adress'];
 								$port = $_POST['login_port'];
-								$base = $ICE->stringToProxy("Meta:tcp -h $ip -p $port");
+								$base = $ICE->stringToProxy($MyConfig['MetaConnection']." -h $ip -p $port");
 								$meta = $base->ice_checkedCast("::Murmur::Meta")->ice_context($Password);	
 								$meta->getUptime();
 								
@@ -132,7 +132,7 @@ echo '
 								$_SESSION['port'] = $_POST['login_port'];
 								$_SESSION['password'] = $_POST['login_password'];
 								
-								header('location: '.$MyConfig['http_adress'].'/mumble');
+								header('location: ./mumble');
 								
 							}
 							catch (Exception $e) 
