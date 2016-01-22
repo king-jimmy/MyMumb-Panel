@@ -282,6 +282,14 @@ table th {
 
 /* Mumble Viewer */
 
+.user-in:before {
+  content: '\A';
+}
+
+.user-in {
+  white-space: pre;
+}
+
 .indent-channel {
   padding-left:2em;
 }
@@ -292,4 +300,8 @@ table th {
 
 .user {
   font-weight: 700;
+}
+
+.fa-user {
+  margin-right: .5%;
 }
