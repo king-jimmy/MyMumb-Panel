@@ -95,11 +95,11 @@
 			$newServer->setSuperuserPassword($pw);
 			
 
-			header('location: ../index.php?server_id='.$newServerID.'&display=overview');
+			header('location: index.php?server_id='.$newServerID.'&display=overview');
 		}	
 		else
 		{
-			header('location: ../');
+			header('location: index.php');
 		}
 	}
 	
@@ -113,7 +113,7 @@
 			
 		$Server->delete();
 			
-		header('location: ../');
+		header('location: index.php');
 	}
 	
 	
